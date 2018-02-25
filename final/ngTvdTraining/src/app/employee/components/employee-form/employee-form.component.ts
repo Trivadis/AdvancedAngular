@@ -27,7 +27,24 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   @Output() update = new EventEmitter<Employee>();
   @Output() remove = new EventEmitter<Employee>();
 
-  form: FormGroup = new FormGroup({});
+  form: FormGroup = this.fb.group(
+    {
+      firstname: ['', { validators: Validators.required,
+        updateOn: 'blur'
+       }],
+      lastname: ['', Validators.required],
+      email: [
+        '',
+        [Validators.required, EmployeeValidators.emailValidator],
+        EmployeeValidators.checkEmailUnique(this.service)
+      ],
+      emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
+    },
+    {
+      validator: EmployeeValidators.checkEmailsMatch,
+      updateOn: 'submit' // not working at the moment. Open bug!
+    }
+  );
 
   isEdit = false;
   title = 'Create';
@@ -40,7 +57,21 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
     if (this.employee && this.employee.id) {
       this.isEdit = true;
       this.title = 'Edit';
+      this.form.patchValue(this.employee);
     }
+  }
+
+  get firstname() {
+    return this.form.get('firstname');
+  }
+  get lastname() {
+    return this.form.get('lastname');
+  }
+  get email() {
+    return this.form.get('email');
+  }
+  get emailConfirm() {
+    return this.form.get('emailConfirm');
   }
 
   createEmployee() {

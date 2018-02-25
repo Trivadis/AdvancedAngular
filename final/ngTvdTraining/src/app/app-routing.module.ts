@@ -14,7 +14,8 @@ const routes: Routes = [
       { path: 'welcome', component: WelcomeComponent },
       {
         path: 'employees',
-        loadChildren: './employee/employee.module#EmployeeModule'
+        loadChildren: './employee/employee.module#EmployeeModule',
+        data: { preload: false }
       },
       {
         path: 'about',
