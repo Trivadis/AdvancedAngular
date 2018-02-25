@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/shared.module';
 import { EmployeeModule } from './employee/employee.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth.interceptor';
+import { HttpErrorInterceptor } from './core/http-error.interceptor';
 
 @NgModule({
   imports: [
@@ -20,7 +23,8 @@ import { EmployeeModule } from './employee/employee.module';
     AppRoutingModule
   ],
   declarations: [AppComponent],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

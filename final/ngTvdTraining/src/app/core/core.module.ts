@@ -1,7 +1,10 @@
+import { AuthInterceptor } from './auth.interceptor';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 import { AppCustomPreloader } from './app-custom-preloader';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SuperService } from './super-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // https://angular.io/guide/styleguide#core-feature-module
 
@@ -24,7 +27,10 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [SuperService, AppCustomPreloader]
+      providers: [
+        SuperService,
+        AppCustomPreloader
+      ]
     };
   }
 }
