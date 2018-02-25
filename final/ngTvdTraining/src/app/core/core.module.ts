@@ -1,5 +1,3 @@
-import { AuthInterceptor } from './auth.interceptor';
-import { HttpErrorInterceptor } from './http-error.interceptor';
 import { AppCustomPreloader } from './app-custom-preloader';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
