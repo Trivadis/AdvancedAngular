@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let employee of employees$ | async" appSelect [backgroundColor]="'gray'">
+                <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter" appSelect [backgroundColor]="'gray'">
                     <td>{{ employee.id }}</td>
                     <td>{{ employee.firstname }}</td>
                     <td>{{ employee.lastname }}</td>
