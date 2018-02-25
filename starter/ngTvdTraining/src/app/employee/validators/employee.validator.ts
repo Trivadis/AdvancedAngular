@@ -14,13 +14,13 @@ export class EmployeeValidators {
     return email.value === confirm.value ? null : { nomatch: true };
   }
 
-  // static emailValidator(control: AbstractControl): ValidationErrors | null {
-  //   const val: string = control.value;
-  //   if (!val || val.indexOf('@') > 0) {
-  //     return null;
-  //   }
-  //   return { invalidemail: true };
-  // }
+  static emailValidator(control: AbstractControl): ValidationErrors | null {
+    const val: string = control.value;
+    if (!val || val.indexOf('@') > 0) {
+      return null;
+    }
+    return { invalidemail: true };
+  }
 
   static checkEmailUnique(service: EmployeeService) {
     return (control: AbstractControl) => {
