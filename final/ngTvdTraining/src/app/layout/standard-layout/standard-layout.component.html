@@ -1,0 +1,22 @@
+<header class="bg-light">
+    <div id="pageBanner">
+        <h1>Byod Portal</h1>
+    </div>
+    <div class="container">
+        <nav>
+            <a [routerLink]="['/welcome']" routerLinkActive="active">Home</a>
+            <a [routerLink]="['/employees']" routerLinkActive="active">Employees</a>
+            <a [routerLink]="['/about']" routerLinkActive="active">About</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</main>
+<footer class="bg-light">
+    <div class="container">
+        <p>&copy; 2018, Trivadis AG</p>
+    </div>
+</footer>
