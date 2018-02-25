@@ -1,0 +1,6 @@
+<app-employee-form
+[employee]="employee$ | async"
+(create)="onCreate($event)"
+        (update)="onUpdate($event)"
+        (remove)="onRemove($event)">
+></app-employee-form>
