@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SuperService } from './super-service';
 
 
 // https://angular.io/guide/styleguide#core-feature-module
@@ -7,6 +8,7 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [CommonModule],
   exports: [],
-  declarations: []
+  declarations: [],
+  providers: [SuperService]
 })
 export class CoreModule { }
