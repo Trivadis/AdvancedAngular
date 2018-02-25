@@ -16,5 +16,6 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     this.employees$ = this.service.getEmployees();
+    this.listFilter = this.route.snapshot.queryParams['filterBy'] || '';
   }
 }

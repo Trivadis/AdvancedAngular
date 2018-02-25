@@ -3,9 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './layout/welcome/welcome.component';
 import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
-
-import * as fromEmployeeContainer from './employee/containers';
-import * as fromEmployeeComponents from './employee/components';
+import { AppCustomPreloader } from './core/app-custom-preloader';
 
 const routes: Routes = [
   {
@@ -16,26 +14,19 @@ const routes: Routes = [
       { path: 'welcome', component: WelcomeComponent },
       {
         path: 'employees',
-        component: fromEmployeeContainer.EmployeeListComponent
-      },
-      {
-        path: 'employees/new',
-        component: fromEmployeeContainer.EmployeeComponent
-      },
-      {
-        path: 'employees/:employeeId',
-        component: fromEmployeeContainer.EmployeeComponent
+        loadChildren: './employee/employee.module#EmployeeModule'
       },
       {
         path: 'about',
-        loadChildren: './about/about.module#AboutModule'
+        loadChildren: './about/about.module#AboutModule',
+        data: { preload: true }
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: AppCustomPreloader})],
   exports: [RouterModule],
   providers: []
 })

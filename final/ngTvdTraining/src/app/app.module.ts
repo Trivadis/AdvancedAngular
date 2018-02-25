@@ -7,22 +7,20 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 
-import * as fromEmployeeContainers from './employee/containers';
-import * as fromEmployeeComponents from './employee/components';
-import * as fromEmployeePipes from './employee/pipes';
-import * as fromEmployeeServices from './employee/services';
-import * as fromEmployeeGuards from './employee/guards';
 import { SharedModule } from './shared/shared.module';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, SharedModule, CoreModule, LayoutModule, AppRoutingModule],
-  declarations: [
-    AppComponent,
-    ...fromEmployeeContainers.containers,
-    ...fromEmployeeComponents.components,
-    ...fromEmployeePipes.pipes
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    CoreModule.forRoot(),
+    LayoutModule,
+    AppRoutingModule
   ],
-  providers: [...fromEmployeeServices.services, ...fromEmployeeGuards.guards],
+  declarations: [AppComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

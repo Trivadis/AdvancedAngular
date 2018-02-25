@@ -7,7 +7,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 export class EmployeeFilterPipe implements PipeTransform {
   transform(value: Employee[], filterBy: string): Employee[] {
     filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;
-    return filterBy
+    return (filterBy && value)
       ? value.filter(
           (e: Employee) =>
             (e.firstname.toLocaleLowerCase() + e.lastname.toLocaleLowerCase()).indexOf(filterBy) !==

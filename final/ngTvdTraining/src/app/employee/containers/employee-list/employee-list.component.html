@@ -1,6 +1,6 @@
 <h2>Employees</h2>
 <div class="row">
-    <a class="btn btn-ok" routerLink="./new">
+    <a class="btn btn-ok" routerLink="./new" [queryParams]="{filterBy: listFilter}">
         New Employee
     </a>
 </div>
@@ -17,7 +17,7 @@
 </div>
 <div class="row mt-2">
     <div class="col-md-12">
-        <table class="table table-striped">
+        <table class="table table-striped" *ngIf="employees$; else loading">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -34,12 +34,13 @@
                     <td>{{ employee.lastname }}</td>
                     <td>{{ employee.email }}</td>
                     <td>
-                        <a class="btn btn-ok" [routerLink]="['./',  employee.id]">
+                        <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}">
                             Edit
                         </a>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <ng-template #loading>Data are loaded</ng-template>
     </div>
 </div>

@@ -8,8 +8,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [RouterModule, SharedModule],
   exports: [],
-  declarations: [StandardLayoutComponent, WelcomeComponent],
-  providers: []
+  declarations: [StandardLayoutComponent, WelcomeComponent]
 })
 export class LayoutModule {
   constructor(

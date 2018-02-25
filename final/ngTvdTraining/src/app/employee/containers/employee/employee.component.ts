@@ -28,13 +28,13 @@ export class EmployeeComponent implements OnInit {
 
   onCreate(event: Employee) {
     this.service.createEmployee(event).subscribe(() => {
-      this.router.navigate(['/employees']);
+      this.navigateBack();
     });
   }
 
   onUpdate(event: Employee) {
     this.service.updateEmployee(event).subscribe(() => {
-      this.router.navigate(['/employees']);
+      this.navigateBack();
     });
   }
 
@@ -42,8 +42,11 @@ export class EmployeeComponent implements OnInit {
     const remove = window.confirm('Are you sure?');
     if (remove) {
       this.service.removeEmployee(event).subscribe(() => {
-        this.router.navigate(['/employees']);
+        this.navigateBack();
       });
     }
+  }
+  navigateBack() {
+    this.router.navigate(['/employees'], { queryParamsHandling: 'preserve' });
   }
 }
