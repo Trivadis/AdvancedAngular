@@ -1,0 +1,12 @@
+{
+    "files": [
+        "app.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es5",
+        "types": [
+            "node"
+        ]
+    }
+}
