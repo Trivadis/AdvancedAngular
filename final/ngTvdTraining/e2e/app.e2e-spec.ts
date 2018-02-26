@@ -47,6 +47,7 @@ describe('byod-portal App', () => {
     page.takeScreenshot(5);
 
     page.getElement('button.btn.btn-ok').click();
+    page.acceptAlert();
     page.takeScreenshot(6);
 
     expect(page.getLastname(0)).toEqual('Wayne');
