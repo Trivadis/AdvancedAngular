@@ -5,23 +5,24 @@ import * as fromContainer from './containers';
 import * as fromGuard from './guards';
 
 const routes: Routes = [
-    {
-      path: '',
-      component: fromContainer.EmployeeListComponent
-     },
-     {
-      path: 'new',
-      component: fromContainer.EmployeeComponent
-    },
-     {
-       path: ':employeeId',
-       component: fromContainer.EmployeeComponent,
-       canDeactivate: [fromGuard.EmployeeEditGuard]
-     }
-  ];
+  {
+    path: '',
+    component: fromContainer.EmployeeListComponent
+  },
+  {
+    path: 'new',
+    component: fromContainer.EmployeeComponent
+  },
+  {
+    path: ':employeeId',
+    component: fromContainer.EmployeeComponent,
+    canActivate: [fromGuard.EmployeeEditGuard],
+    canDeactivate: [fromGuard.EmployeeEditGuard]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class EmployeeRoutingModule { }
+export class EmployeeRoutingModule {}
