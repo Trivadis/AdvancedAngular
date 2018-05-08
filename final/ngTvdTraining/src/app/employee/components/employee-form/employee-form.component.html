@@ -3,10 +3,10 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Firstname</label>
         <div class="col-sm-10">
-            <input type="text" formControlName="firstname" class="form-control">
+            <input type="text" formControlName="firstname" class="form-control" autocomplete="given-name">
         </div>
         <div class="offset-sm-2 col-sm-10 text-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
-            <span *ngIf="firstname.errors?.required">
+            <span *ngIf="firstname.hasError('required')">
                 Firstname is required.
             </span>
         </div>
@@ -14,10 +14,10 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Lastname</label>
         <div class="col-sm-10">
-            <input type="text" formControlName="lastname" class="form-control">
+            <input type="text" formControlName="lastname" class="form-control" autocomplete="family-name">
         </div>
         <div class="offset-sm-2 col-sm-10 text-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
-            <span *ngIf="lastname.errors?.required">
+            <span *ngIf="lastname.hasError('required')">
                 Lastname is required.
             </span>
         </div>
@@ -25,16 +25,16 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-            <input type="text" formControlName="email" class="form-control">
+            <input type="text" formControlName="email" class="form-control" autocomplete="email">
         </div>
         <div class="offset-sm-2 col-sm-10 text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-            <span *ngIf="email.errors?.required">
+            <span *ngIf="email.hasError('required')">
                 E-Mail is required.
             </span>
-            <span *ngIf="email.errors?.invalidemail">
+            <span *ngIf="email.hasError('invalidemail')">
                 E-Mail is invalid.
             </span>
-            <span *ngIf="email.errors?.emailNotUnique">
+            <span *ngIf="email.hasError('emailNotUnique')">
                 E-Mail is not unique.
             </span>
         </div>
@@ -42,18 +42,18 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Confirm Email</label>
         <div class="col-sm-10">
-            <input type="text" formControlName="emailConfirm" class="form-control">
+            <input type="text" formControlName="emailConfirm" class="form-control" autocomplete="email">
         </div>
         <div class="offset-sm-2 col-sm-10 text-danger" *ngIf="emailConfirm.invalid && (emailConfirm.dirty || emailConfirm.touched)">
-            <span *ngIf="emailConfirm.errors?.required">
+            <span *ngIf="emailConfirm.hasError('required')">
                 E-Mail is required.
             </span>
-            <span *ngIf="emailConfirm.errors?.invalidemail">
+            <span *ngIf="emailConfirm.hasError('invalidemail')">
                 E-Mail is invalid.
             </span>
         </div>
-        <div class="offset-sm-2 col-sm-10 text-danger" *ngIf="form.errors?.nomatch && (emailConfirm.dirty || emailConfirm.touched)">
-            <span *ngIf="form.errors?.nomatch">
+        <div class="offset-sm-2 col-sm-10 text-danger" *ngIf="form.hasError('nomatch') && (emailConfirm.dirty || emailConfirm.touched)">
+            <span *ngIf="form.hasError('nomatch')">
                 E-Mails must match.
             </span>
         </div>
