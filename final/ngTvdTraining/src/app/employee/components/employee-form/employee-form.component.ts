@@ -18,7 +18,8 @@ import { EmployeeService } from '../../services/index';
 @Component({
   selector: 'app-employee-form',
   templateUrl: 'employee-form.component.html',
-  styleUrls: ['employee-form.component.scss']
+  styleUrls: ['employee-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeeFormComponent implements OnInit, OnChanges {
   @Input() employee: Employee;
@@ -29,9 +30,13 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   form: FormGroup = this.fb.group(
     {
-      firstname: ['', { validators: Validators.required,
-        updateOn: 'blur'
-       }],
+      firstname: [
+        '',
+        {
+          validators: Validators.required,
+          updateOn: 'blur'
+        }
+      ],
       lastname: ['', Validators.required],
       email: [
         '',

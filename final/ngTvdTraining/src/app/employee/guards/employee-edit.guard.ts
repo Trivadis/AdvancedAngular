@@ -5,6 +5,7 @@ import { CanDeactivate } from '@angular/router';
 @Injectable()
 export class EmployeeEditGuard implements CanDeactivate<EmployeeComponent> {
   canDeactivate(component: EmployeeComponent): boolean {
-    return confirm(`Navigate away and lose all changes?`);
+    return true;
+    // return confirm(`Navigate away and lose all changes?`);
   }
 }
