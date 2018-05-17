@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanDeactivate,
-  Router,
-  RouterStateSnapshot
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot } from '@angular/router';
 import { EmployeeComponent } from './../containers/employee/employee.component';
 
 @Injectable()
@@ -13,9 +7,9 @@ export class EmployeeEditGuard implements CanActivate, CanDeactivate<EmployeeCom
   constructor(private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const foo = +route.paramMap.get('employeeId');
+    const employeeId = +route.paramMap.get('employeeId');
 
-    if (isNaN(foo)) {
+    if (isNaN(employeeId)) {
       this.router.navigate(['/employees']);
     } else {
       return true;
