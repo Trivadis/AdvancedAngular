@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[appHotkey]'
@@ -11,7 +11,7 @@ export class HotkeyDirective {
 
   constructor() {}
 
-  @HostListener('keydown', ['$event'])
+  @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(kbdEvent: KeyboardEvent) {
     if (kbdEvent.keyCode === this.keyCode && kbdEvent.ctrlKey) {
       kbdEvent.preventDefault();
