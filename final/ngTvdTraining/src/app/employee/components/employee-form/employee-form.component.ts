@@ -1,19 +1,17 @@
-import { EmployeeValidators } from './../../validators/employee.validator';
-import { Employee } from '../../model/employee.model';
-
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnInit,
-  Input,
-  Output,
   EventEmitter,
+  Input,
   OnChanges,
-  SimpleChanges,
-  ChangeDetectionStrategy
+  OnInit,
+  Output,
+  SimpleChanges
 } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Employee } from '../../model/employee.model';
 import { EmployeeService } from '../../services/index';
+import { EmployeeValidators } from './../../validators/employee.validator';
 
 @Component({
   selector: 'app-employee-form',
@@ -43,6 +41,14 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
         [Validators.required, EmployeeValidators.emailValidator],
         EmployeeValidators.checkEmailUnique(this.service)
       ],
+      // email: [
+      //   '',
+      //   {
+      //     validators: [Validators.required, EmployeeValidators.emailValidator],
+      //     asyncValidators: EmployeeValidators.checkEmailUnique(this.service),
+      //     updateOn: 'blur'
+      //   }
+      // ],
       emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
     },
     {
