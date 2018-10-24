@@ -1,0 +1,46 @@
+<h2>Employees</h2>
+<div class="row">
+    <a class="btn btn-ok" routerLink="./new" [queryParams]="{filterBy: listFilter}">
+        New Employee
+    </a>
+</div>
+<div class="row mb-2">
+    <div class="col-md-2">Search:</div>
+    <div class="col-md-6">
+        <input type="search" [(ngModel)]="listFilter" class="form-control" />
+    </div>
+</div>
+<div class="row" *ngIf="listFilter">
+    <div class="col-md-6">
+        <span>Filtered by: {{listFilter}} </span>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-12">
+        <table class="table table-striped" *ngIf="employees$; else loading">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>E-Mail</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter" appSelect [backgroundColor]="'gray'">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.firstname }}</td>
+                    <td>{{ employee.lastname }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>
+                        <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #loading>Data are loaded</ng-template>
+    </div>
+</div>
