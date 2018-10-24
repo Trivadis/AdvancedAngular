@@ -2,11 +2,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  throwError as _throw ,  of } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
-import { _throw } from 'rxjs/observable/throw';
 import { environment } from '../../../environments/environment';
-import { of } from 'rxjs/observable/of';
 import { Device } from './../model/device.model';
 
 @Injectable()

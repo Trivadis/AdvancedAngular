@@ -1,4 +1,6 @@
-import 'rxjs/add/observable/throw';
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
 
 import {
   HttpErrorResponse,
@@ -8,7 +10,6 @@ import {
   HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 import { Store } from '@ngrx/store';
 import { catchError } from 'rxjs/operators';
@@ -29,7 +30,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
 
         // return the error to the method that called it
-        return Observable.throw(error);
+        return observableThrowError(error);
       })
     );
   }

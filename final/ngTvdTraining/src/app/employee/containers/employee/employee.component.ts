@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import * as fromService from '../../services';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Employee } from '../../model/employee.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
