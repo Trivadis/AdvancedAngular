@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import * as fromService from '../../services';
 import { Store } from '@ngrx/store';

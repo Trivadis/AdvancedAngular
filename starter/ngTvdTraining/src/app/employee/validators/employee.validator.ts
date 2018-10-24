@@ -1,6 +1,6 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { EmployeeService } from '../services/index';
 

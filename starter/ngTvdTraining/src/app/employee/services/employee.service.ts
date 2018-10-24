@@ -2,11 +2,9 @@ import { Employee } from './../model/employee.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  of ,  throwError as _throw } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
 
 @Injectable()
 export class EmployeeService {
