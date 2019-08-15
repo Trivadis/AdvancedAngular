@@ -50,8 +50,8 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
     },
     {
-      validator: EmployeeValidators.checkEmailsMatch,
-      updateOn: 'submit' // not working at the moment. Open bug!
+      validator: EmployeeValidators.checkEmailsMatch
+      // updateOn: 'blur' // not working at the moment. Open bug! => Bug closed since Angular 7.2.x
     }
   );
 
@@ -69,20 +69,6 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       this.form.patchValue(this.employee);
     }
   }
-
-  get firstname() {
-    return this.form.get('firstname');
-  }
-  get lastname() {
-    return this.form.get('lastname');
-  }
-  get email() {
-    return this.form.get('email');
-  }
-  get emailConfirm() {
-    return this.form.get('emailConfirm');
-  }
-
   createEmployee() {
     if (this.form.valid) {
       this.create.emit(this.form.value);
@@ -97,5 +83,18 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   removeEmployee() {
     this.remove.emit({ ...this.employee, ...this.form.value });
+  }
+
+  get firstname() {
+    return this.form.get('firstname');
+  }
+  get lastname() {
+    return this.form.get('lastname');
+  }
+  get email() {
+    return this.form.get('email');
+  }
+  get emailConfirm() {
+    return this.form.get('emailConfirm');
   }
 }

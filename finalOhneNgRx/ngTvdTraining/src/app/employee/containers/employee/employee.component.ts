@@ -1,15 +1,18 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
-import * as fromService from '../../services';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { EmployeeFormComponent } from '../../components/employee-form/employee-form.component';
 import { Employee } from '../../model/employee.model';
-import { Router, ActivatedRoute } from '@angular/router';
+import * as fromService from '../../services';
 
 @Component({
   templateUrl: 'employee.component.html'
 })
 export class EmployeeComponent implements OnInit {
   employee$: Observable<Employee>;
+
+  @ViewChild(EmployeeFormComponent, { static: true })
+  employeeFormComp: EmployeeFormComponent;
 
   constructor(
     private service: fromService.EmployeeService,

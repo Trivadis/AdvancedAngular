@@ -1,10 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
-import { Observable } from 'rxjs';
-import { Employee } from '../../model/employee.model';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { EmployeeFormComponent } from '../../components/employee-form/employee-form.component';
+import { Employee } from '../../model/employee.model';
 import * as fromStore from '../../store';
 
 @Component({
@@ -13,40 +11,27 @@ import * as fromStore from '../../store';
 export class EmployeeComponent implements OnInit {
   employee$: Observable<Employee>;
 
+  @ViewChild(EmployeeFormComponent, { static: true })
+  employeeFormComp: EmployeeFormComponent;
+
   constructor(private store$: Store<fromStore.State>) {}
 
   ngOnInit() {
     this.employee$ = this.store$.select(fromStore.getSelectedEmployee);
-
-    // this.route.paramMap.subscribe(p => {
-    //   const eId = +p.get('employeeId');
-    //   if (eId > 0) {
-    //     this.employee$ = this.service.getEmployee(eId);
-    //   }
-    // });
   }
 
-  onCreate(event: Employee) {
-    this.store$.dispatch(new fromStore.CreateEmployee(event));
-    // this.service.createEmployee(event).subscribe(() => {
-    //   this.navigateBack();
-    // });
+  onCreate(employee: Employee) {
+    this.store$.dispatch(fromStore.createEmployee({ employee }));
   }
 
-  onUpdate(event: Employee) {
-    this.store$.dispatch(new fromStore.UpdateEmployee(event));
-    // this.service.updateEmployee(event).subscribe(() => {
-    //   this.navigateBack();
-    // });
+  onUpdate(employee: Employee) {
+    this.store$.dispatch(fromStore.updateEmployee({ employee }));
   }
 
-  onRemove(event: Employee) {
+  onRemove(employee: Employee) {
     const remove = window.confirm('Are you sure?');
     if (remove) {
-      this.store$.dispatch(new fromStore.RemoveEmployee(event));
-      // this.service.removeEmployee(event).subscribe(() => {
-      //   this.navigateBack();
-      // });
+      this.store$.dispatch(fromStore.removeEmployee({ employee }));
     }
   }
 }

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('byod-portal App', () => {
+describe('employee-portal App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,10 +9,10 @@ describe('byod-portal App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo('/');
-    expect(page.getText('app-root h2')).toEqual('Byod Portal');
+    expect(page.getText('app-root h2')).toEqual('Employee Portal');
   });
 
-  it('should navigate to byod page', () => {
+  it('should navigate to employee page', () => {
     page.navigateTo('/');
 
     page.getElement('[ng-reflect-router-link="/employees"]').click();

@@ -1,7 +1,5 @@
-import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-
-import { of } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { map } from 'rxjs/operators';
 import { EmployeeService } from '../services/index';
 
 export class EmployeeValidators {
@@ -25,10 +23,11 @@ export class EmployeeValidators {
   static checkEmailUnique(service: EmployeeService) {
     return (control: AbstractControl) => {
       return service.checkEmailUnique(control.value).pipe(
-          map(res => {
-              console.log(res);
-        return res ? null : { emailNotUnique: true };
-      }));
+        map(res => {
+          console.log(res);
+          return res ? null : { emailNotUnique: true };
+        })
+      );
     };
   }
 }

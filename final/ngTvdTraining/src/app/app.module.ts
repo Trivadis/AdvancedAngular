@@ -1,23 +1,24 @@
-import { LayoutModule } from './layout/layout.module';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
-
-import { environment } from './../environments/environment';
-import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
-
-import { reducers, effects, CustomSerializer } from './store';
+import {
+  RouterState,
+  RouterStateSerializer,
+  StoreRouterConnectingModule
+} from '@ngrx/router-store';
+import { MetaReducer, StoreModule } from '@ngrx/store';
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { storeFreeze } from 'ngrx-store-freeze';
+import { environment } from './../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
+import { CustomSerializer, effects, reducers } from './store';
 
-export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];
 
 @NgModule({
   imports: [
@@ -28,9 +29,19 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [store
     LayoutModule,
     AppRoutingModule,
 
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true
+      }
+    }),
     EffectsModule.forRoot(effects),
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal
+    }),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({

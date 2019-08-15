@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { WelcomeComponent } from './layout/welcome/welcome.component';
-import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AppCustomPreloader } from './core/app-custom-preloader';
+import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
+import { WelcomeComponent } from './layout/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -14,12 +13,12 @@ const routes: Routes = [
       { path: 'welcome', component: WelcomeComponent },
       {
         path: 'employees',
-        loadChildren: './employee/employee.module#EmployeeModule',
+        loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
         data: { preload: false }
       },
       {
         path: 'about',
-        loadChildren: './about/about.module#AboutModule',
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
         data: { preload: true }
       }
     ]
@@ -27,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: AppCustomPreloader})],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: AppCustomPreloader })],
   exports: [RouterModule],
   providers: []
 })

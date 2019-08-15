@@ -52,8 +52,8 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
     },
     {
-      validator: EmployeeValidators.checkEmailsMatch,
-      updateOn: 'submit' // not working at the moment. Open bug!
+      validator: EmployeeValidators.checkEmailsMatch
+      // updateOn: 'blur' // not working at the moment. => Bug closed => > 7.2.x
     }
   );
 

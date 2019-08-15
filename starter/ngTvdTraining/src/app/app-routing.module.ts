@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { WelcomeComponent } from './layout/welcome/welcome.component';
-import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
-
+import { RouterModule, Routes } from '@angular/router';
 import * as fromEmployeeContainer from './employee/containers';
-import * as fromEmployeeComponents from './employee/components';
+import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
+import { WelcomeComponent } from './layout/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -28,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: 'about',
-        loadChildren: './about/about.module#AboutModule'
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
       }
     ]
   }

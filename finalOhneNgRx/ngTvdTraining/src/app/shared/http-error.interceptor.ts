@@ -1,7 +1,3 @@
-
-import {throwError as observableThrowError,  Observable } from 'rxjs';
-
-
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -10,8 +6,7 @@ import {
   HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { Store } from '@ngrx/store';
+import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
