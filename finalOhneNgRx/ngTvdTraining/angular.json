@@ -119,6 +119,41 @@
           }
         }
       }
+    },
+    "autoFocus": {
+      "projectType": "library",
+      "root": "projects/auto-focus",
+      "sourceRoot": "projects/auto-focus/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/auto-focus/tsconfig.lib.json",
+            "project": "projects/auto-focus/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/auto-focus/src/test.ts",
+            "tsConfig": "projects/auto-focus/tsconfig.spec.json",
+            "karmaConfig": "projects/auto-focus/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/auto-focus/tsconfig.lib.json",
+              "projects/auto-focus/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-tvd-training",

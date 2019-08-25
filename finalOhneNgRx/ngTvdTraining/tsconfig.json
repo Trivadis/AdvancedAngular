@@ -9,8 +9,21 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"],
-    "module": "esnext"
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "module": "esnext",
+    "paths": {
+      "auto-focus": [
+        "dist/auto-focus"
+      ],
+      "auto-focus/*": [
+        "dist/auto-focus/*"
+      ]
+    }
   }
 }
