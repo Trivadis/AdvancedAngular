@@ -13,8 +13,8 @@
     "@types/body-parser": "0.0.33",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^3.0.2",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
     "nodemon": "^1.11.0"
   },
   "devDependencies": {
