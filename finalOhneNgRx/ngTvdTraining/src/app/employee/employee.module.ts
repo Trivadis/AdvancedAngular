@@ -1,3 +1,4 @@
+import { AutoFocusModule } from './../../../projects/auto-focus/src/lib/auto-focus.module';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import * as fromComponents from './components';
@@ -9,7 +10,7 @@ import * as fromServices from './services';
 import { IsEmailValidator } from './validators/check-email-match.validator';
 
 @NgModule({
-  imports: [SharedModule, EmployeeRoutingModule],
+  imports: [SharedModule, EmployeeRoutingModule, AutoFocusModule],
   exports: [],
   declarations: [
     ...fromContainers.containers,
@@ -19,4 +20,4 @@ import { IsEmailValidator } from './validators/check-email-match.validator';
   ],
   providers: [...fromServices.services, ...fromGuards.guards]
 })
-export class EmployeeModule {}
+export class EmployeeModule { }
