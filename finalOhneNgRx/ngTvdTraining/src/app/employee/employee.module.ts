@@ -1,5 +1,5 @@
-import { AutoFocusModule } from './../../../projects/auto-focus/src/lib/auto-focus.module';
 import { NgModule } from '@angular/core';
+import { AutoFocusModule } from 'auto-focus';
 import { SharedModule } from '../shared/shared.module';
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
