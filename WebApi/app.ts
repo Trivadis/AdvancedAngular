@@ -30,7 +30,7 @@ let employees: Employee[] = [
 ];
 
 //CORS middleware
-let allowCrossDomain = function(req: any, res: any, next: any) {
+let allowCrossDomain = function (req: any, res: any, next: any) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -39,24 +39,24 @@ let allowCrossDomain = function(req: any, res: any, next: any) {
 
 let employeeRouter = express.Router();
 employeeRouter.route('/employees')
-.get((request: express.Request, response: express.Response) => {
-  response.setHeader('Content-Type', 'application/json');
-  response.send(JSON.stringify(employees));
-})
-.post((request: express.Request, response: express.Response) => {
-  let e = <Employee>request.body;
+  .get((request: express.Request, response: express.Response) => {
+    response.setHeader('Content-Type', 'application/json');
+    response.send(JSON.stringify(employees));
+  })
+  .post((request: express.Request, response: express.Response) => {
+    let e = <Employee>request.body;
 
-  e.id = getNextEmployeeId();
-  employees.push(e);
+    e.id = getNextEmployeeId();
+    employees.push(e);
 
-  response.setHeader('Content-Type', 'application/json');
-  response.send(JSON.stringify(e));
-});
+    response.setHeader('Content-Type', 'application/json');
+    response.send(JSON.stringify(e));
+  });
 
 employeeRouter
   .route('/employees/:id')
   .get((request: express.Request, response: express.Response) => {
-    let id = request.params.id;
+    let id = +request.params.id;
     let filteredEmployees = employees.filter(p => p.id == id);
 
     if (filteredEmployees.length != 1) {
@@ -134,4 +134,5 @@ app.use('/api', deviceRouter);
 
 app.listen(port, () => {
   console.log('Started listening on port ' + port);
+  console.log('You can navigate to http://localhost:8180/api/persons');
 });

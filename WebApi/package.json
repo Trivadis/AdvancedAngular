@@ -4,7 +4,6 @@
   "description": "Simple Web-API to use in sample projects",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Thomas Claudius Huber",
@@ -12,10 +11,7 @@
   "dependencies": {
     "@types/body-parser": "0.0.33",
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "gulp": "^4.0.2",
-    "gulp-typescript": "^5.0.1",
-    "nodemon": "^1.11.0"
+    "express": "^4.14.0"
   },
   "devDependencies": {
     "@types/express": "^4.0.33",
