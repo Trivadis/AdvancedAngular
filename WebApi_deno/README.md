@@ -59,7 +59,7 @@ deno  run --allow-net  [PATH_TO_FILE]\server.ts
 
 If the server is not responding to the requests, verify to use `DENO` endpoint (`apiBaseUrl`) in your `environments.ts` file:
 
-```JSON
+```javascript
 export const environment = {
   production: false,
 
