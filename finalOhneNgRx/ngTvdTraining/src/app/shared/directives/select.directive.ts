@@ -1,12 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  Renderer,
-  HostListener,
-  HostBinding,
-  Input,
-  Renderer2
-} from '@angular/core';
+import { Directive, ElementRef, Renderer, HostListener, HostBinding, Input, Renderer2 } from '@angular/core';
 
 @Directive({ selector: '[appSelect]' })
 export class SelectDirective {
