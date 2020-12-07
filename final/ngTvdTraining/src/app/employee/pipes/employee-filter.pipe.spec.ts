@@ -1,6 +1,6 @@
 import { EmployeeFilterPipe } from './employee-filter.pipe';
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { Employee } from '../model/employee.model';
 
 describe('EmployeeFilterPipe', () => {

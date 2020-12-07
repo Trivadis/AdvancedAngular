@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
@@ -14,7 +14,7 @@ describe('EmployeeListComponent', () => {
   let fixture: ComponentFixture<EmployeeListComponent>;
   let comp: EmployeeListComponent;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -35,11 +35,11 @@ describe('EmployeeListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     expect(comp).toBeTruthy();
   }));
 
-  it('should render title in a h2 tag', async(() => {
+  it('should render title in a h2 tag', waitForAsync(() => {
     const result = fixture.nativeElement.querySelector('h2').textContent;
     expect(result).toContain('Employees');
   }));
