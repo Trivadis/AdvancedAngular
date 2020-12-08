@@ -34,14 +34,14 @@
     </div>
 
     <div class="form-actions">
-        <button type="button" class="btn btn-ok" *ngIf="!isEdit" (click)="createEmployee()">
+        <button type="button" class="btn btn-ok btn-primary" *ngIf="!isEdit" (click)="createEmployee()">
             Create
-        </button>
-        <button type="button" class="btn btn-ok" *ngIf="isEdit" (click)="updateEmployee()">
+          </button>
+          <button type="button" class="btn btn-ok btn-primary" *ngIf="isEdit" (click)="updateEmployee()">
             Save
-        </button>
-        <button type="button" class="btn btn-warning" *ngIf="isEdit" (click)="removeEmployee()">
+          </button>
+          <button type="button" class="btn btn-secondary" *ngIf="isEdit" (click)="removeEmployee()">
             Delete
-        </button>
+          </button>
     </div>
 </form>

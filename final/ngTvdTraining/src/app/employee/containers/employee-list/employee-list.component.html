@@ -7,7 +7,7 @@
 <div class="row mb-2">
     <div class="col-md-2">Search:</div>
     <div class="col-md-6">
-        <input type="search" [(ngModel)]="listFilter" class="form-control" />
+        <input type="search" [(ngModel)]="listFilter" class="form-control" #input [appHotkey]="70" (keyClicked)="keyClicked()" />
     </div>
 </div>
 <div class="row" *ngIf="listFilter">

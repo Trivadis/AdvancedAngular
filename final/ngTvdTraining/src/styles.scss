@@ -53,6 +53,10 @@ body {
     border-color: #c92c21;
   }
 
+  .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
   .btn-primary {
     color: #fff;
     background-color: #c92c21;
@@ -88,9 +92,9 @@ body {
       opacity: 1;
     }
   }
-   */
+*/
 
-  /* Slide transition  */
+  /* Slide transition*/
   app-root main {
     animation-duration: .5s;
     animation-name: slideIn;
