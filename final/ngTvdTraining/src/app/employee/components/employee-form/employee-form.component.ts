@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../model/employee.model';
-import { EmployeeService } from '../../services/index';
+import { EmployeeService } from '../../services';
 import { EmployeeValidators } from './../../validators/employee.validator';
 
 @Component({
@@ -52,7 +52,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
     },
     {
-      validator: EmployeeValidators.checkEmailsMatch
+      validators: EmployeeValidators.checkEmailsMatch
       // updateOn: 'blur' // not working at the moment. => Bug closed => > 7.2.x
     }
   );
