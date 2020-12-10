@@ -1,5 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { environment } from '../../../environments/environment';
 import { Employee } from '../model/employee.model';
 import { EmployeeService } from './employee.service';
@@ -23,7 +23,7 @@ describe('EmployeeService', () => {
     httpMock.verify();
   });
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     const dummy: Employee[] = [
       { id: 3, firstname: 'Thomas', lastname: 'Huber', email: 'thomas.huber@trivadis.com' },
       { id: 5, firstname: 'Thomas', lastname: 'Gassmann', email: 'thomas.gassmann@trivadis.com' }
