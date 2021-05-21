@@ -76,6 +76,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   }
 
   updateEmployee() {
+    this.form.markAllAsTouched();
     if (this.form.touched && this.form.valid) {
       this.update.emit({ ...this.employee, ...this.form.value });
     }
