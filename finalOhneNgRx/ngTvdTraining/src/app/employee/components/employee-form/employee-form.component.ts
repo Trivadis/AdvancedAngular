@@ -15,7 +15,7 @@ import { EmployeeValidators } from './../../validators/employee.validator';
 @Component({
   selector: 'app-employee-form',
   templateUrl: 'employee-form.component.html',
-  styleUrls: ['employee-form.component.scss']
+  styleUrls: ['employee-form.component.scss'],
 })
 export class EmployeeFormComponent implements OnInit, OnChanges {
   @Input() employee: Employee;
@@ -30,14 +30,14 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
         '',
         {
           validators: Validators.required,
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       ],
       lastname: ['', Validators.required],
       email: [
         '',
         [Validators.required, EmployeeValidators.emailValidator],
-        EmployeeValidators.checkEmailUnique(this.service)
+        EmployeeValidators.checkEmailUnique(this.service),
       ],
       // email: [
       //   '',
@@ -47,11 +47,14 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       //     updateOn: 'blur'
       //   }
       // ],
-      emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
+      emailConfirm: [
+        '',
+        [Validators.required, EmployeeValidators.emailValidator],
+      ],
     },
     {
-      validators: EmployeeValidators.checkEmailsMatch
-      // updateOn: 'blur' // not working at the moment. Open bug! => Bug closed since Angular 7.2.x
+      validators: EmployeeValidators.checkEmailsMatch,
+      // updateOn: 'blur'
     }
   );
 
